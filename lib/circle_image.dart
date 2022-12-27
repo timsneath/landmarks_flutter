@@ -10,10 +10,7 @@ class CircleImage extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: const [
-          BoxShadow(
-              blurRadius: 10,
-              color: CupertinoColors.systemGrey2,
-              spreadRadius: 2)
+          BoxShadow(blurRadius: 7, color: CupertinoColors.systemGrey)
         ],
       ),
       width: 200,

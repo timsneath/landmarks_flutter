@@ -47,5 +47,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>io.flutter.embedded_views_preview</key>
+	<true/>
+	<key>Privacy - Location When In Use Usage Description</key>
+	<string>Allows access to location when in use</string>
 </dict>
 </plist>
