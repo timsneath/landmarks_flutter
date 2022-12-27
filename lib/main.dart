@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:landmarks/circle_image.dart';
 
 void main() {
   runApp(const LandmarksApp());
@@ -32,6 +33,7 @@ class ContentView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const CircleImage(),
               Text('Turtle Rock',
                   style: CupertinoTheme.of(context)
                       .textTheme
