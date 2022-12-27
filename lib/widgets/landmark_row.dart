@@ -9,14 +9,16 @@ class LandmarkRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
-          child: SizedBox(height: 50, width: 50, child: landmark.image),
-        ),
-        Text(landmark.name),
-      ],
+    return CupertinoFormRow(
+      child: Row(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8),
+            child: SizedBox(height: 50, width: 50, child: landmark.image),
+          ),
+          Text(landmark.name),
+        ],
+      ),
     );
   }
 }

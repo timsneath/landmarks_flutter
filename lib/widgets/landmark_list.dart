@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 import '../model/landmark.dart';
 
@@ -12,12 +11,14 @@ class LandmarkList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemBuilder: (context, index) => LandmarkRow(landmark: landmarks[index]),
-      itemCount: landmarks.length,
-      separatorBuilder: (context, index) => Divider(
-        color: CupertinoColors.opaqueSeparator,
-      ),
+    return CupertinoFormSection.insetGrouped(
+      header: Text('Landmarks',
+          style: CupertinoTheme.of(context)
+              .textTheme
+              .textStyle
+              .copyWith(fontSize: 34, fontWeight: FontWeight.bold)),
+      children:
+          landmarks.map((landmark) => LandmarkRow(landmark: landmark)).toList(),
     );
   }
 }
