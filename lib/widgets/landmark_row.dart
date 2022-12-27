@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import 'landmark.dart';
+import '../model/landmark.dart';
 
 class LandmarkRow extends StatelessWidget {
   final Landmark landmark;
