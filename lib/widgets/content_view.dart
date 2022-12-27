@@ -16,18 +16,24 @@ class ContentView extends StatelessWidget {
       child: Column(
         children: [
           Stack(
-            alignment: AlignmentDirectional.topCenter,
-            children: const [
-              MapView(height: 300),
+            alignment: AlignmentDirectional.topStart,
+            children: [
+              MapView(height: 300, coordinates: landmark.coordinates),
               Padding(
-                padding: EdgeInsets.fromLTRB(0, 170, 0, 0),
-                child: CircleImage(),
+                padding: const EdgeInsets.fromLTRB(0, 170, 0, 0),
+                child: Center(child: CircleImage(image: landmark.image)),
+              ),
+              const SafeArea(
+                child: CupertinoNavigationBarBackButton(
+                  previousPageTitle: 'Landmarks',
+                ),
               ),
             ],
           ),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(landmark.name,
@@ -54,17 +60,20 @@ class ContentView extends StatelessWidget {
                                 color: CupertinoColors.secondaryLabel)),
                   ],
                 ),
-                Divider(),
-                Text('About Turtle Rock',
+                const Divider(),
+                Text('About ${landmark.park}',
                     style: CupertinoTheme.of(context)
                         .textTheme
                         .textStyle
                         .copyWith(fontSize: 22)),
-                Text(landmark.description,
-                    style: CupertinoTheme.of(context)
-                        .textTheme
-                        .textStyle
-                        .copyWith(fontSize: 17)),
+                Flexible(
+                  child: Text(landmark.description,
+                      overflow: TextOverflow.fade,
+                      style: CupertinoTheme.of(context)
+                          .textTheme
+                          .textStyle
+                          .copyWith(fontSize: 17)),
+                ),
               ],
             ),
           ),

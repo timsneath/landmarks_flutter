@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CircleImage extends StatelessWidget {
-  const CircleImage({super.key});
+  final AssetImage image;
+  const CircleImage({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(blurRadius: 7, color: CupertinoColors.systemGrey)
         ],
       ),
@@ -20,7 +21,7 @@ class CircleImage extends StatelessWidget {
         backgroundColor: Colors.white,
         child: CircleAvatar(
           radius: 96.5,
-          backgroundImage: AssetImage('assets/turtlerock@2x.jpg'),
+          backgroundImage: image,
         ),
       ),
     );

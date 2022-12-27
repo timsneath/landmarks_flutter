@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:landmarks/widgets/content_view.dart';
 
 import '../model/landmark.dart';
 
@@ -10,14 +11,22 @@ class LandmarkRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoFormRow(
-      child: Row(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: SizedBox(height: 50, width: 50, child: landmark.image),
-          ),
-          Text(landmark.name),
-        ],
+      child: GestureDetector(
+        onTap: () => Navigator.push(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => ContentView(landmark: landmark),
+            )),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: SizedBox(
+                  height: 50, width: 50, child: Image(image: landmark.image)),
+            ),
+            Text(landmark.name),
+          ],
+        ),
       ),
     );
   }

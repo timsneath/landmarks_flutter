@@ -14,7 +14,7 @@ class LandmarkList extends StatelessWidget {
     return CustomScrollView(
       semanticChildCount: landmarks.length,
       slivers: [
-        CupertinoSliverNavigationBar(
+        const CupertinoSliverNavigationBar(
           largeTitle: Text('Landmarks'),
         ),
         SliverSafeArea(
