@@ -9,7 +9,7 @@ class Landmark {
   final String imageName;
   final Coordinates coordinates;
 
-  Image get image => Image.asset(imageName);
+  Image get image => Image.asset('assets/$imageName@2x.jpg');
 
   const Landmark(this.id, this.name, this.park, this.state, this.description,
       this.imageName, this.coordinates);

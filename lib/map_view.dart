@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 class MapView extends StatelessWidget {
   final double height;
-  const MapView({this.height = 300, super.key});
+  const MapView({super.key, this.height = 300});
 
   @override
   Widget build(BuildContext context) {

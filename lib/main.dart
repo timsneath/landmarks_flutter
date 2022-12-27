@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:landmarks/circle_image.dart';
 import 'package:landmarks/landmark.dart';
+import 'package:landmarks/landmark_row.dart';
 import 'package:landmarks/map_view.dart';
 
 final landmarks = <Landmark>{};
@@ -24,7 +25,20 @@ class LandmarksApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
-      home: ContentView(),
+      home: PreviewProvider(),
+    );
+  }
+}
+
+class PreviewProvider extends StatelessWidget {
+  const PreviewProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+      child: SafeArea(
+        child: LandmarkRow(landmark: landmarks.first),
+      ),
     );
   }
 }
@@ -48,11 +62,11 @@ class ContentView extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Turtle Rock',
+                Text(landmarks.last.name,
                     style: CupertinoTheme.of(context)
                         .textTheme
                         .textStyle
