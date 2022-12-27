@@ -1,9 +1,20 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:landmarks/circle_image.dart';
+import 'package:landmarks/landmark.dart';
 import 'package:landmarks/map_view.dart';
 
-void main() {
+final landmarks = <Landmark>{};
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final data = await rootBundle.loadString('assets/landmark_data.json');
+  landmarks.addAll(
+      List<Landmark>.from(json.decode(data).map((x) => Landmark.fromJson(x))));
+
   runApp(const LandmarksApp());
 }
 

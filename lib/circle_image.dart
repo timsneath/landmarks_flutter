@@ -20,7 +20,7 @@ class CircleImage extends StatelessWidget {
         backgroundColor: Colors.white,
         child: CircleAvatar(
           radius: 96.5,
-          backgroundImage: AssetImage('assets/turtlerock.jpg'),
+          backgroundImage: AssetImage('assets/turtlerock@2x.jpg'),
         ),
       ),
     );
