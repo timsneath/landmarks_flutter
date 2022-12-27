@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const LandmarksApp());
@@ -7,10 +8,12 @@ void main() {
 class LandmarksApp extends StatelessWidget {
   const LandmarksApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return const CupertinoApp(
+      theme: CupertinoThemeData(brightness: Brightness.light),
       home: ContentView(),
     );
   }
@@ -21,6 +24,38 @@ class ContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return CupertinoPageScaffold(
+      child: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Turtle Rock',
+                  style: CupertinoTheme.of(context)
+                      .textTheme
+                      .textStyle
+                      .copyWith(fontSize: 25)),
+              Row(
+                children: [
+                  Text('Joshua Tree National Park',
+                      style: CupertinoTheme.of(context)
+                          .textTheme
+                          .textStyle
+                          .copyWith(fontSize: 15)),
+                  const Spacer(),
+                  Text('California',
+                      style: CupertinoTheme.of(context)
+                          .textTheme
+                          .textStyle
+                          .copyWith(fontSize: 15))
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
