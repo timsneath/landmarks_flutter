@@ -11,14 +11,28 @@ class LandmarkList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoFormSection.insetGrouped(
-      header: Text('Landmarks',
-          style: CupertinoTheme.of(context)
-              .textTheme
-              .textStyle
-              .copyWith(fontSize: 34, fontWeight: FontWeight.bold)),
-      children:
-          landmarks.map((landmark) => LandmarkRow(landmark: landmark)).toList(),
+    return CustomScrollView(
+      semanticChildCount: landmarks.length,
+      slivers: [
+        CupertinoSliverNavigationBar(
+          largeTitle: Text('Landmarks'),
+        ),
+        SliverSafeArea(
+          top: false,
+          minimum: const EdgeInsets.only(top: 8),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                if (index < landmarks.length) {
+                  return LandmarkRow(landmark: landmarks[index]);
+                } else {
+                  return null;
+                }
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

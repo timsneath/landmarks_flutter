@@ -36,9 +36,7 @@ class PreviewProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: SafeArea(
-        child: LandmarkList(landmarks: landmarks),
-      ),
+      child: LandmarkList(landmarks: landmarks),
     );
   }
 }
