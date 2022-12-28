@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' show CircleAvatar;
 
 class CircleImage extends StatelessWidget {
   final AssetImage image;
@@ -18,7 +18,7 @@ class CircleImage extends StatelessWidget {
       height: 200,
       child: CircleAvatar(
         radius: 100,
-        backgroundColor: Colors.white,
+        backgroundColor: CupertinoColors.white,
         child: CircleAvatar(
           radius: 96.5,
           backgroundImage: image,

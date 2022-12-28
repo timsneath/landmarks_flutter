@@ -1,6 +1,7 @@
 import 'package:apple_maps_flutter/apple_maps_flutter.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:landmarks/model/landmark.dart';
+
+import '../model/landmark.dart';
 
 class MapView extends StatelessWidget {
   final double? height;

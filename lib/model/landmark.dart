@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 
 class Landmark {
   final int id;
@@ -6,13 +6,13 @@ class Landmark {
   final String park;
   final String state;
   final String description;
-  final String imageName;
+  final String _imageName;
   final Coordinates coordinates;
 
-  AssetImage get image => AssetImage('assets/$imageName@2x.jpg');
+  AssetImage get image => AssetImage('assets/$_imageName@2x.jpg');
 
   const Landmark(this.id, this.name, this.park, this.state, this.description,
-      this.imageName, this.coordinates);
+      this._imageName, this.coordinates);
 
   Landmark.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -20,7 +20,7 @@ class Landmark {
         park = json['park'],
         state = json['state'],
         description = json['description'],
-        imageName = json['imageName'],
+        _imageName = json['imageName'],
         coordinates = Coordinates.fromJson(json['coordinates']);
 }
 

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 import 'model/landmark.dart';
-import 'widgets/landmark_list.dart';
+import 'pages/landmarks_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,20 +23,7 @@ class LandmarksApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
-      home: PreviewProvider(landmarks: landmarks),
-    );
-  }
-}
-
-class PreviewProvider extends StatelessWidget {
-  final List<Landmark> landmarks;
-
-  const PreviewProvider({super.key, required this.landmarks});
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: LandmarkList(landmarks: landmarks),
+      home: LandmarksPage(landmarks: landmarks),
     );
   }
 }
