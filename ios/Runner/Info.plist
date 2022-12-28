@@ -31,25 +31,33 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<!-- Removed as Landmarks doesn't support landscape right now -->
+		<!-- <string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string> -->
 	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
+	<!-- Removed as Landmarks isn't tested on iPad right now -->
+	<!-- <key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
+	</array> -->
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+
+	<!-- Added for apple_maps_flutter plugin -->
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
 	<key>Privacy - Location When In Use Usage Description</key>
 	<string>Allows access to location when in use</string>
+
+	<!-- Enable Impeller -->
+	<key>FLTEnableImpeller</key>
+  	<true/>
 </dict>
 </plist>
