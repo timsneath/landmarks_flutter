@@ -22,7 +22,10 @@ class LandmarkRow extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: SizedBox(
-                  height: 50, width: 50, child: Image(image: landmark.image)),
+                height: 50,
+                width: 50,
+                child: Image.asset(landmark.image),
+              ),
             ),
             Text(landmark.name),
           ],

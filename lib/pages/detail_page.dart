@@ -61,14 +61,13 @@ class DetailPage extends StatelessWidget {
                     ],
                   ),
                   const Divider(),
-                  Text('About ${landmark.park}',
+                  Text('About ${landmark.name}',
                       style: CupertinoTheme.of(context)
                           .textTheme
                           .textStyle
                           .copyWith(fontSize: 22)),
                   Flexible(
                     child: Text(landmark.description,
-                        overflow: TextOverflow.fade,
                         style: CupertinoTheme.of(context)
                             .textTheme
                             .textStyle

@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 class Landmark {
   final int id;
   final String name;
@@ -9,7 +7,7 @@ class Landmark {
   final String _imageName;
   final Coordinates coordinates;
 
-  AssetImage get image => AssetImage('assets/$_imageName@2x.jpg');
+  String get image => 'assets/$_imageName@2x.jpg';
 
   const Landmark(this.id, this.name, this.park, this.state, this.description,
       this._imageName, this.coordinates);
