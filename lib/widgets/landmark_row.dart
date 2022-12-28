@@ -10,27 +10,23 @@ class LandmarkRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return CupertinoListTile(
+      padding: EdgeInsets.all(12),
       onTap: () => Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) => DetailPage(landmark: landmark),
-          )),
-      child: CupertinoFormRow(
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: SizedBox(
-                height: 50,
-                width: 50,
-                child: Image.asset(landmark.image),
-              ),
-            ),
-            Text(landmark.name),
-          ],
+        context,
+        CupertinoPageRoute(
+          builder: (context) => DetailPage(landmark: landmark),
         ),
       ),
+      leading: Image.asset(landmark.image),
+      leadingSize: 50,
+      leadingToTitle: 12,
+      title: Text(landmark.name,
+          style: CupertinoTheme.of(context)
+              .textTheme
+              .textStyle
+              .copyWith(fontWeight: FontWeight.w300, letterSpacing: -0.15)),
+      trailing: CupertinoListTileChevron(),
     );
   }
 }

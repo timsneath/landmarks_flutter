@@ -11,6 +11,9 @@ class LandmarksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
+      navigationBar: const CupertinoNavigationBar(
+        middle: Text('Landmarks'),
+      ),
       child: LandmarkList(landmarks: landmarks),
     );
   }
