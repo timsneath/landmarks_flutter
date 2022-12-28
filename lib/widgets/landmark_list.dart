@@ -15,7 +15,6 @@ class LandmarkList extends StatelessWidget {
       slivers: [
         CupertinoSliverNavigationBar(
           stretch: true,
-          backgroundColor: CupertinoColors.extraLightBackgroundGray,
           border: null,
           largeTitle: Text('Landmarks'),
         ),
