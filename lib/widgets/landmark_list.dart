@@ -3,15 +3,32 @@ import 'package:flutter/cupertino.dart';
 import '../model/landmark.dart';
 import 'landmark_row.dart';
 
-class LandmarkList extends StatelessWidget {
+class LandmarkList extends StatefulWidget {
   final List<Landmark> landmarks;
+  final bool showFavoritesOnly;
 
-  const LandmarkList({super.key, required this.landmarks});
+  const LandmarkList(
+      {super.key, required this.landmarks, required this.showFavoritesOnly});
+
+  @override
+  State<LandmarkList> createState() => _LandmarkListState();
+}
+
+class _LandmarkListState extends State<LandmarkList> {
+  late final Iterable<Landmark> filteredLandmarks;
+
+  @override
+  void initState() {
+    super.initState();
+    filteredLandmarks = widget.showFavoritesOnly
+        ? widget.landmarks.where((element) => element.isFavorite)
+        : widget.landmarks;
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      semanticChildCount: landmarks.length,
+      semanticChildCount: widget.landmarks.length,
       slivers: [
         CupertinoSliverNavigationBar(
           stretch: true,
@@ -22,7 +39,8 @@ class LandmarkList extends StatelessWidget {
         SliverFillRemaining(
           hasScrollBody: false,
           child: CupertinoListSection.insetGrouped(children: [
-            for (final landmark in landmarks) LandmarkRow(landmark: landmark),
+            for (final landmark in filteredLandmarks)
+              LandmarkRow(landmark: landmark),
           ]),
         ),
       ],

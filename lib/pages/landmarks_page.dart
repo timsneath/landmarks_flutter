@@ -11,7 +11,7 @@ class LandmarksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      child: LandmarkList(landmarks: landmarks),
+      child: LandmarkList(landmarks: landmarks, showFavoritesOnly: false),
     );
   }
 }
