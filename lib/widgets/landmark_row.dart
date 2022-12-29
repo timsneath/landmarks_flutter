@@ -26,7 +26,17 @@ class LandmarkRow extends StatelessWidget {
               .textTheme
               .textStyle
               .copyWith(fontWeight: FontWeight.w300, letterSpacing: -0.15)),
-      trailing: CupertinoListTileChevron(),
+      trailing: Row(children: [
+        if (landmark.isFavorite)
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
+            child: Icon(
+              CupertinoIcons.star_fill,
+              color: CupertinoColors.systemYellow,
+            ),
+          ),
+        CupertinoListTileChevron(),
+      ]),
     );
   }
 }
