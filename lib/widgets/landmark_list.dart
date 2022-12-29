@@ -17,6 +17,7 @@ class LandmarkList extends StatelessWidget {
           stretch: true,
           border: null,
           largeTitle: Text('Landmarks'),
+          backgroundColor: CupertinoColors.systemGroupedBackground,
         ),
         SliverFillRemaining(
           hasScrollBody: false,

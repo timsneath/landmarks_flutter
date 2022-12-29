@@ -11,7 +11,6 @@ class LandmarksPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      backgroundColor: CupertinoColors.systemGroupedBackground,
       child: LandmarkList(landmarks: landmarks),
     );
   }
