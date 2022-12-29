@@ -11,7 +11,7 @@ class LandmarkRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoListTile(
-      padding: EdgeInsets.all(12),
+      padding: EdgeInsetsDirectional.symmetric(horizontal: 20, vertical: 10),
       onTap: () => Navigator.push(
         context,
         CupertinoPageRoute(
@@ -25,7 +25,7 @@ class LandmarkRow extends StatelessWidget {
           style: CupertinoTheme.of(context)
               .textTheme
               .textStyle
-              .copyWith(fontWeight: FontWeight.w300, letterSpacing: -0.15)),
+              .copyWith(letterSpacing: -0.15)),
       trailing: Row(children: [
         if (landmark.isFavorite)
           Padding(

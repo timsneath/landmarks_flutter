@@ -5,25 +5,25 @@ import 'landmark_row.dart';
 
 class LandmarkList extends StatefulWidget {
   final List<Landmark> landmarks;
-  final bool showFavoritesOnly;
 
-  const LandmarkList(
-      {super.key, required this.landmarks, required this.showFavoritesOnly});
+  const LandmarkList({super.key, required this.landmarks});
 
   @override
   State<LandmarkList> createState() => _LandmarkListState();
 }
 
 class _LandmarkListState extends State<LandmarkList> {
-  late final Iterable<Landmark> filteredLandmarks;
+  late bool showFavoritesOnly;
 
   @override
   void initState() {
     super.initState();
-    filteredLandmarks = widget.showFavoritesOnly
-        ? widget.landmarks.where((element) => element.isFavorite)
-        : widget.landmarks;
+    showFavoritesOnly = false;
   }
+
+  Iterable<Landmark> filteredLandmarks() => showFavoritesOnly
+      ? widget.landmarks.where((element) => element.isFavorite)
+      : widget.landmarks;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,20 @@ class _LandmarkListState extends State<LandmarkList> {
         SliverFillRemaining(
           hasScrollBody: false,
           child: CupertinoListSection.insetGrouped(children: [
-            for (final landmark in filteredLandmarks)
+            CupertinoListTile(
+              title: Text('Favorites only'),
+              trailing: CupertinoSwitch(
+                value: showFavoritesOnly,
+                onChanged: (bool value) {
+                  setState(() {
+                    showFavoritesOnly = value;
+                  });
+                },
+              ),
+              padding:
+                  EdgeInsetsDirectional.symmetric(horizontal: 20, vertical: 4),
+            ),
+            for (final landmark in filteredLandmarks())
               LandmarkRow(landmark: landmark),
           ]),
         ),
