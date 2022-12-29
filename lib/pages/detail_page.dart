@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Divider;
+import 'package:landmarks/widgets/favorite_button.dart';
 
 import '../model/landmark.dart';
 import '../widgets/circle_image.dart';
@@ -36,11 +37,19 @@ class DetailPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(landmark.name,
-                      style: CupertinoTheme.of(context)
-                          .textTheme
-                          .textStyle
-                          .copyWith(fontSize: 25)),
+                  Row(
+                    children: [
+                      Text(landmark.name,
+                          style: CupertinoTheme.of(context)
+                              .textTheme
+                              .textStyle
+                              .copyWith(fontSize: 25)),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: FavoriteButton(isSet: landmark.isFavorite),
+                      )
+                    ],
+                  ),
                   Row(
                     children: [
                       Text(landmark.park,
@@ -49,7 +58,7 @@ class DetailPage extends StatelessWidget {
                               .textStyle
                               .copyWith(
                                   fontSize: 15,
-                                  color: CupertinoColors.secondaryLabel)),
+                                  color: CupertinoColors.systemGrey)),
                       const Spacer(),
                       Text(landmark.state,
                           style: CupertinoTheme.of(context)
@@ -57,7 +66,7 @@ class DetailPage extends StatelessWidget {
                               .textStyle
                               .copyWith(
                                   fontSize: 15,
-                                  color: CupertinoColors.secondaryLabel)),
+                                  color: CupertinoColors.systemGrey)),
                     ],
                   ),
                   const Divider(),
