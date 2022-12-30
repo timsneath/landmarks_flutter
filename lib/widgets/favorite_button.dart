@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 
 class FavoriteButton extends StatefulWidget {
   final bool isSet;
+  final VoidCallback onTap;
 
-  const FavoriteButton({super.key, required this.isSet});
+  const FavoriteButton({super.key, required this.isSet, required this.onTap});
 
   @override
   State<FavoriteButton> createState() => _FavoriteButtonState();
@@ -28,6 +29,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                 color: CupertinoColors.systemGrey),
         onTap: () => setState(() {
               isSet = !isSet;
+              widget.onTap();
             }));
   }
 }

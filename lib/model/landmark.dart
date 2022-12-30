@@ -22,6 +22,26 @@ class Landmark {
         _imageName = json['imageName'],
         isFavorite = json['isFavorite'],
         coordinates = Coordinates.fromJson(json['coordinates']);
+
+  Landmark copyWith(
+      {int? id,
+      String? name,
+      String? park,
+      String? state,
+      String? description,
+      String? imageName,
+      Coordinates? coordinates,
+      bool? isFavorite}) {
+    return Landmark(
+        id ?? this.id,
+        name ?? this.name,
+        park ?? this.park,
+        state ?? this.state,
+        description ?? this.description,
+        imageName ?? _imageName,
+        isFavorite ?? this.isFavorite,
+        coordinates ?? this.coordinates);
+  }
 }
 
 class Coordinates {

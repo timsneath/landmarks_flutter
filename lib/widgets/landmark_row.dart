@@ -3,6 +3,21 @@ import 'package:flutter/cupertino.dart';
 import '../model/landmark.dart';
 import '../pages/detail_page.dart';
 
+class FavoriteIcon extends StatelessWidget {
+  const FavoriteIcon({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.fromLTRB(0, 0, 8, 0),
+      child: Icon(
+        CupertinoIcons.star_fill,
+        color: CupertinoColors.systemYellow,
+      ),
+    );
+  }
+}
+
 class LandmarkRow extends StatelessWidget {
   final Landmark landmark;
 
@@ -11,7 +26,8 @@ class LandmarkRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoListTile(
-      padding: EdgeInsetsDirectional.symmetric(horizontal: 20, vertical: 10),
+      padding:
+          const EdgeInsetsDirectional.symmetric(horizontal: 20, vertical: 10),
       onTap: () => Navigator.push(
         context,
         CupertinoPageRoute(
@@ -27,15 +43,8 @@ class LandmarkRow extends StatelessWidget {
               .textStyle
               .copyWith(letterSpacing: -0.15)),
       trailing: Row(children: [
-        if (landmark.isFavorite)
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 8, 0),
-            child: Icon(
-              CupertinoIcons.star_fill,
-              color: CupertinoColors.systemYellow,
-            ),
-          ),
-        CupertinoListTileChevron(),
+        if (landmark.isFavorite) const FavoriteIcon(),
+        const CupertinoListTileChevron(),
       ]),
     );
   }

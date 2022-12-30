@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
+import '../model/landmarks_model.dart';
 import '../model/landmark.dart';
 import 'landmark_row.dart';
 
 class LandmarkList extends StatefulWidget {
-  final List<Landmark> landmarks;
-
-  const LandmarkList({super.key, required this.landmarks});
+  const LandmarkList({super.key});
 
   @override
   State<LandmarkList> createState() => _LandmarkListState();
@@ -21,16 +20,19 @@ class _LandmarkListState extends State<LandmarkList> {
     showFavoritesOnly = false;
   }
 
-  Iterable<Landmark> filteredLandmarks() => showFavoritesOnly
-      ? widget.landmarks.where((element) => element.isFavorite)
-      : widget.landmarks;
+  Iterable<Landmark> filteredLandmarks(Iterable<Landmark> landmarks) =>
+      showFavoritesOnly
+          ? landmarks.where((element) => element.isFavorite)
+          : landmarks;
 
   @override
   Widget build(BuildContext context) {
+    final landmarks = LandmarksModel.of(context).landmarks;
+
     return CustomScrollView(
-      semanticChildCount: widget.landmarks.length,
+      semanticChildCount: landmarks.length,
       slivers: [
-        CupertinoSliverNavigationBar(
+        const CupertinoSliverNavigationBar(
           stretch: true,
           border: null,
           largeTitle: Text('Landmarks'),
@@ -40,7 +42,7 @@ class _LandmarkListState extends State<LandmarkList> {
           hasScrollBody: false,
           child: CupertinoListSection.insetGrouped(children: [
             CupertinoListTile(
-              title: Text('Favorites only'),
+              title: const Text('Favorites only'),
               trailing: CupertinoSwitch(
                 value: showFavoritesOnly,
                 onChanged: (bool value) {
@@ -49,10 +51,10 @@ class _LandmarkListState extends State<LandmarkList> {
                   });
                 },
               ),
-              padding:
-                  EdgeInsetsDirectional.symmetric(horizontal: 20, vertical: 4),
+              padding: const EdgeInsetsDirectional.symmetric(
+                  horizontal: 20, vertical: 4),
             ),
-            for (final landmark in filteredLandmarks())
+            for (final landmark in filteredLandmarks(landmarks))
               LandmarkRow(landmark: landmark),
           ]),
         ),

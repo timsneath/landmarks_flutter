@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Divider;
 import 'package:landmarks/widgets/favorite_button.dart';
 
+import '../model/landmarks_model.dart';
 import '../model/landmark.dart';
 import '../widgets/circle_image.dart';
 import '../widgets/map_view.dart';
@@ -46,7 +47,15 @@ class DetailPage extends StatelessWidget {
                               .copyWith(fontSize: 25)),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: FavoriteButton(isSet: landmark.isFavorite),
+                        child: FavoriteButton(
+                          isSet: landmark.isFavorite,
+                          onTap: () {
+                            LandmarksModel.of(context).updateLandmark(
+                                landmark.id,
+                                landmark.copyWith(
+                                    isFavorite: !landmark.isFavorite));
+                          },
+                        ),
                       )
                     ],
                   ),
