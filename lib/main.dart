@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:landmarks/model/landmarks_model.dart';
 
 import 'model/landmark.dart';
-import 'pages/landmarks_page.dart';
+import 'widgets/badge_background.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +25,7 @@ class LandmarksApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
-      home: LandmarksPage(),
+      home: Badge(),
     );
   }
 }
