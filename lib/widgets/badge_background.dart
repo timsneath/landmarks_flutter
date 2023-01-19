@@ -1,7 +1,8 @@
 import 'dart:math' show min;
 
 import 'package:flutter/cupertino.dart';
-import 'package:landmarks/widgets/hexagon_parameters.dart';
+
+import 'hexagon_parameters.dart';
 
 class BadgeBackground extends CustomPainter {
   LinearGradient fill = const LinearGradient(
@@ -9,7 +10,7 @@ class BadgeBackground extends CustomPainter {
       Color.fromARGB(255, 239, 120, 221),
       Color.fromARGB(255, 239, 172, 120),
     ],
-    begin: Alignment(0, -1),
+    begin: Alignment(0, -1), // SwiftUI range is [0, 1]; Flutter is [-1, 1]
     end: Alignment(0, 0.2),
   );
 
@@ -30,6 +31,8 @@ class BadgeBackground extends CustomPainter {
           height * (0.20 + HexagonParameters.adjustment));
     for (final segment in HexagonParameters.segments) {
       path.lineTo(width * segment.line.dx + xOffset, height * segment.line.dy);
+
+      // Control and endpoint are inverted compared to SwiftUI
       path.quadraticBezierTo(
         width * segment.control.dx + xOffset,
         height * segment.control.dy,
