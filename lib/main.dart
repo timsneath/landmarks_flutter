@@ -25,7 +25,9 @@ class LandmarksApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
-      home: Badge(),
+      home: SafeArea(
+        child: Badge(),
+      ),
     );
   }
 }

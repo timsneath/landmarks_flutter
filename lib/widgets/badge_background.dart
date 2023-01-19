@@ -9,8 +9,8 @@ class BadgeBackground extends CustomPainter {
       Color.fromARGB(255, 239, 120, 221),
       Color.fromARGB(255, 239, 172, 120),
     ],
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
+    begin: Alignment(0, -1),
+    end: Alignment(0, 0.2),
   );
 
   @override
@@ -20,21 +20,22 @@ class BadgeBackground extends CustomPainter {
       ..shader = fill.createShader(rect)
       ..style = PaintingStyle.fill;
 
-    final width = min(size.height, size.width);
-    final height = width;
     const xScale = 0.832;
+    final height = min(size.height, size.width);
+    final width = height * xScale;
     final xOffset = (width * (1.0 - xScale)) / 2.0;
 
     final path = Path()
       ..moveTo(width * 0.95 + xOffset,
           height * (0.20 + HexagonParameters.adjustment));
     for (final segment in HexagonParameters.segments) {
-      path.lineTo(segment.line.dx, segment.line.dy);
+      path.lineTo(width * segment.line.dx + xOffset, height * segment.line.dy);
       path.quadraticBezierTo(
-          width * segment.curve.dx + xOffset,
-          height * segment.curve.dy,
-          width * segment.control.dx + xOffset,
-          height * segment.control.dy);
+        width * segment.control.dx + xOffset,
+        height * segment.control.dy,
+        width * segment.curve.dx + xOffset,
+        height * segment.curve.dy,
+      );
     }
 
     canvas.drawPath(path, paintColor);
