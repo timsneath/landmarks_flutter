@@ -1,6 +1,7 @@
 import 'dart:math' show min;
 
 import 'package:flutter/cupertino.dart';
+import 'package:landmarks/widgets/badge_symbol.dart';
 
 import 'hexagon_parameters.dart';
 
@@ -55,6 +56,7 @@ class Badge extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: BadgeBackground(),
+      foregroundPainter: BadgeSymbol(),
       child: Container(),
     );
   }
