@@ -30,6 +30,7 @@ class BadgeBackground extends CustomPainter {
     final path = Path()
       ..moveTo(width * 0.95 + xOffset,
           height * (0.20 + HexagonParameters.adjustment));
+
     for (final segment in HexagonParameters.segments) {
       path.lineTo(width * segment.line.dx + xOffset, height * segment.line.dy);
 

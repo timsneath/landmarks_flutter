@@ -5,8 +5,7 @@ import 'package:flutter/cupertino.dart';
 class BadgeSymbol extends CustomPainter {
   static const symbolColor = Color.fromARGB(127, 79, 79, 191);
 
-  @override
-  void paint(Canvas canvas, Size size) {
+  void drawSymbol(Canvas canvas, Size size, double angle) {
     final width = min(size.height, size.width);
     final height = width * 0.75;
     final spacing = width * 0.030;
@@ -30,16 +29,20 @@ class BadgeSymbol extends CustomPainter {
       ..lineTo(width - spacing, height - spacing)
       ..lineTo(middle + topWidth, topHeight + spacing)
       ..lineTo(middle, (topHeight / 2) + (spacing * 3));
+  }
 
-    for (var i = 0; i < 1; i++) {
+  @override
+  void paint(Canvas canvas, Size size) {
+    for (var i = 0; i < 8; i++) {
+      const rotationEpsilon = 2 * pi / 8;
       canvas
         ..save()
         ..translate(middle, middle)
-        ..rotate((2 * pi) / (8 * i))
-        ..translate(-middle, -middle)
-        // ..translate(width / 2, 0.75 * height)
-        // ..scale(0.25)
+        ..rotate(rotationEpsilon * i)
+        ..scale(0.25)
+        // ..translate(-width / 8, (0.15 * height))
         ..drawPath(path, paintColor)
+        ..translate(-middle, -middle)
         ..restore();
     }
   }
