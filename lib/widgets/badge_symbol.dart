@@ -31,14 +31,14 @@ class BadgeSymbol extends CustomPainter {
       ..lineTo(middle + topWidth, topHeight + spacing)
       ..lineTo(middle, (topHeight / 2) + (spacing * 3));
 
-    for (var i = 0; i < 1; i++) {
+    for (var i = 0; i < 8; i++) {
       canvas
         ..save()
         ..translate(middle, middle)
-        ..rotate((2 * pi) / (8 * i))
+        ..rotate((2 * pi) / (8 / i))
+        ..scale(0.33)
         ..translate(-middle, -middle)
-        // ..translate(width / 2, 0.75 * height)
-        // ..scale(0.25)
+        ..translate(0, -.5 * height)
         ..drawPath(path, paintColor)
         ..restore();
     }

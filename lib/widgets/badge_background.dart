@@ -12,7 +12,7 @@ class BadgeBackground extends CustomPainter {
       Color.fromARGB(255, 239, 172, 120),
     ],
     begin: Alignment(0, -1), // SwiftUI range is [0, 1]; Flutter is [-1, 1]
-    end: Alignment(0, 0.2),
+    end: Alignment(0, -0.3),
   );
 
   @override
