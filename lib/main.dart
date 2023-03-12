@@ -1,17 +1,27 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:landmarks/model/landmarks_model.dart';
 
+import 'model/hikedata.dart';
 import 'model/landmark.dart';
-import 'widgets/badge_background.dart';
+import 'model/landmarks_model.dart';
+import 'widgets/hike_graph.dart';
+
+final hikes = <Hike>[];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final data = await rootBundle.loadString('assets/landmark_data.json');
-  final initialLandmarks =
-      List<Landmark>.from(json.decode(data).map((x) => Landmark.fromJson(x)));
+  final landmarkData = await rootBundle.loadString('assets/landmark_data.json');
+  final initialLandmarks = List<Landmark>.from(
+      json.decode(landmarkData).map((x) => Landmark.fromJson(x)));
+  final hikeData = await rootBundle.loadString('assets/hike_data.json');
+  hikes.addAll(
+      List<Hike>.from(json.decode(hikeData).map((x) => Hike.fromJson(x))));
+  if (kDebugMode) {
+    print(hikes.length);
+  }
 
   runApp(LandmarksModel(
     landmarks: initialLandmarks,
@@ -24,9 +34,9 @@ class LandmarksApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoApp(
+    return CupertinoApp(
       home: SafeArea(
-        child: Badge(),
+        child: CupertinoPageScaffold(child: HikeGraph(hike: hikes[0])),
       ),
     );
   }
