@@ -13,21 +13,19 @@ class HikeGraph extends StatelessWidget {
   Widget build(BuildContext context) {
     final seriesRange = hike.observations.map((e) => e.elevation).range();
 
-    final graphSeries = <GraphCapsule>[];
-    for (var idx = 0; idx < hike.observations.length; idx++) {
-      graphSeries.add(GraphCapsule(
-          index: idx,
-          capsuleColor: CupertinoColors.inactiveGray,
-          height: 80,
-          range: hike.observations[idx].elevation,
-          overallRange: seriesRange));
-    }
-
     return Container(
       color: CupertinoColors.systemGrey,
       child: SizedBox(
         height: 200,
-        child: Row(children: graphSeries),
+        child: Row(children: [
+          for (var idx = 0; idx < hike.observations.length; idx++)
+            GraphCapsule(
+                index: idx,
+                capsuleColor: CupertinoColors.inactiveGray,
+                height: 200,
+                range: hike.observations[idx].elevation,
+                overallRange: seriesRange)
+        ]),
       ),
     );
   }

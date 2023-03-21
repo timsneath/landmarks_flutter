@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'model/hikedata.dart';
 import 'model/landmark.dart';
 import 'model/landmarks_model.dart';
+import 'structures/range.dart';
 import 'widgets/hike_graph.dart';
 
 final hikes = <Hike>[];
@@ -19,9 +19,6 @@ void main() async {
   final hikeData = await rootBundle.loadString('assets/hike_data.json');
   hikes.addAll(
       List<Hike>.from(json.decode(hikeData).map((x) => Hike.fromJson(x))));
-  if (kDebugMode) {
-    print(hikes.length);
-  }
 
   runApp(LandmarksModel(
     landmarks: initialLandmarks,
@@ -36,7 +33,13 @@ class LandmarksApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp(
       home: SafeArea(
-        child: CupertinoPageScaffold(child: HikeGraph(hike: hikes[0])),
+        child: CupertinoPageScaffold(
+            child: HikeGraph(
+                hike: Hike(0, 'Test', 3.0, 1, [
+          Observation(0, Range(300, 600), Range(100, 300), Range(100, 300)),
+          Observation(0, Range(500, 800), Range(100, 300), Range(100, 300)),
+          Observation(0, Range(200, 400), Range(100, 300), Range(100, 300)),
+        ]))),
       ),
     );
   }
