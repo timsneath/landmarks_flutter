@@ -1,5 +1,3 @@
-import 'dart:math' show max;
-
 import 'package:flutter/cupertino.dart';
 
 import '../structures/range.dart';
