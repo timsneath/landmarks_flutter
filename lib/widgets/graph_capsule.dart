@@ -11,15 +11,9 @@ class GraphCapsule extends StatelessWidget {
   final Range<double> range;
   final Range<double> overallRange;
 
-  double get heightRatio => max(range.magnitude / overallRange.magnitude, 0.15);
-  double get offsetRatio =>
-      (range.from - overallRange.from) / overallRange.magnitude;
-  double get padding => height * offsetRatio;
-
-  double get heightRatio2 => overallRange.magnitude / height;
-
-  double get paddingTop => (overallRange.to - range.to) * heightRatio2;
-  double get paddingBottom => (overallRange.from - range.from) * heightRatio2;
+  double get heightRatio => height / overallRange.magnitude;
+  double get paddingTop => (overallRange.to - range.to) * heightRatio;
+  double get paddingBottom => (range.from - overallRange.from) * heightRatio;
 
   const GraphCapsule(
       {super.key,
@@ -31,16 +25,15 @@ class GraphCapsule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(0, paddingTop, 0, paddingBottom),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Container(
-            color: index % 2 == 0
-                ? CupertinoColors.activeBlue
-                : CupertinoColors.activeGreen,
-          ),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: SizedBox(
+        // height: range.magnitude * heightRatio,
+        child: Container(
+          color: index % 2 == 0
+              ? CupertinoColors.activeBlue
+              : CupertinoColors.activeGreen,
+          margin: EdgeInsets.fromLTRB(0, paddingTop, 0, paddingBottom),
         ),
       ),
     );
