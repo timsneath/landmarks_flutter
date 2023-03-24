@@ -23,15 +23,16 @@ class GraphCapsule extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(30),
-      child: SizedBox(
-        // height: range.magnitude * heightRatio,
-        child: Container(
-          color: index % 2 == 0
-              ? CupertinoColors.activeBlue
-              : CupertinoColors.activeGreen,
-          margin: EdgeInsets.fromLTRB(0, paddingTop, 0, paddingBottom),
+    return Expanded(
+      child: Container(
+        padding: EdgeInsets.fromLTRB(0, paddingTop, 0, paddingBottom),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(40),
+          child: Container(
+            color: index % 2 == 0
+                ? CupertinoColors.activeBlue
+                : CupertinoColors.activeGreen,
+          ),
         ),
       ),
     );

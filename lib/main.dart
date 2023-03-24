@@ -36,9 +36,9 @@ class LandmarksApp extends StatelessWidget {
         child: CupertinoPageScaffold(
             child: HikeGraph(
                 hike: Hike(0, 'Test', 3.0, 1, [
-          Observation(0, Range(300, 600), Range(100, 300), Range(100, 300)),
-          Observation(0, Range(500, 800), Range(100, 300), Range(100, 300)),
-          Observation(0, Range(200, 400), Range(100, 300), Range(100, 300)),
+          Observation(0, Range(400, 800), Range(100, 300), Range(100, 300)),
+          Observation(0, Range(0, 800), Range(100, 300), Range(100, 300)),
+          Observation(0, Range(400, 600), Range(100, 300), Range(100, 300)),
         ]))),
       ),
     );

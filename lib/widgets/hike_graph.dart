@@ -23,7 +23,7 @@ class HikeGraph extends StatelessWidget {
               GraphCapsule(
                   index: idx,
                   capsuleColor: CupertinoColors.inactiveGray,
-                  height: 80,
+                  height: 200,
                   range: hike.observations[idx].elevation,
                   overallRange: seriesRange)
           ],
