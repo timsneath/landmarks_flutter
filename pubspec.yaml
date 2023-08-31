@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   apple_maps_flutter: ^1.2.0
-  cupertino_icons: ^1.0.5
+  cupertino_icons: ^1.0.6
   intl: ^0.18.1
 
 dev_dependencies:
